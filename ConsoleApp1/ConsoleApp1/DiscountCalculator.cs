@@ -3,6 +3,7 @@ namespace ConsoleApp1;
 internal class DiscountCalculator
 {
     private const int CurrencyDecimals = 2;
+    private const decimal MaxDiscount = 2000m;
 
     // 門檻由高至低排列，取第一個符合者。新增級距請維持此順序。
     private static readonly (decimal Threshold, decimal Rate)[] Tiers =
@@ -22,11 +23,19 @@ internal class DiscountCalculator
         {
             if (amount > threshold)
             {
-                return RoundToCents(amount * rate);
+                return ApplyTier(amount, rate);
             }
         }
 
         return amount;
+    }
+
+    private static decimal ApplyTier(decimal amount, decimal rate)
+    {
+        var discounted = RoundToCents(amount * rate);
+        var discount = amount - discounted;
+
+        return discount > MaxDiscount ? amount - MaxDiscount : discounted;
     }
 
     private static decimal RoundToCents(decimal value)

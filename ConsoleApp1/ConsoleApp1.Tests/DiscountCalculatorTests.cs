@@ -72,4 +72,14 @@ public class DiscountCalculatorTests
 
         Assert.That(result, Is.EqualTo(4500m));
     }
+
+    [Test]
+    public void Calculate_DiscountExceeds2000_CapsDiscountAt2000()
+    {
+        var sut = new DiscountCalculator();
+
+        var result = sut.Calculate(20000m);
+
+        Assert.That(result, Is.EqualTo(18000m));
+    }
 }
