@@ -22,4 +22,14 @@ public class DiscountCalculatorTests
 
         Assert.That(result, Is.EqualTo(1000m));
     }
+
+    [TestCase(0)]
+    [TestCase(-1)]
+    public void Calculate_NonPositiveAmount_ThrowsArgumentOutOfRange(decimal amount)
+    {
+        var sut = new DiscountCalculator();
+
+        Assert.That(() => sut.Calculate(amount),
+            Throws.TypeOf<ArgumentOutOfRangeException>());
+    }
 }
