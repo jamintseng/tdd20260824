@@ -15,4 +15,17 @@ public class TennisGameTests
 
         Assert.That(result, Is.EqualTo(expected));
     }
+
+    [TestCase(1, 0, "Fifteen-Love")]
+    [TestCase(2, 1, "Thirty-Fifteen")]
+    [TestCase(3, 2, "Forty-Thirty")]
+    public void Score_DifferentScoresBelowForty_ReturnsBothScores(
+        int player1, int player2, string expected)
+    {
+        var sut = new TennisGame();
+
+        var result = sut.Score(player1, player2);
+
+        Assert.That(result, Is.EqualTo(expected));
+    }
 }
