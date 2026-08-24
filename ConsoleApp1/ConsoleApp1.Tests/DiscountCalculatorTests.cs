@@ -12,4 +12,14 @@ public class DiscountCalculatorTests
 
         Assert.That(result, Is.EqualTo(1350m));
     }
+
+    [Test]
+    public void Calculate_AmountNotOver1000_ReturnsOriginalAmount()
+    {
+        var sut = new DiscountCalculator();
+
+        var result = sut.Calculate(1000m);
+
+        Assert.That(result, Is.EqualTo(1000m));
+    }
 }
