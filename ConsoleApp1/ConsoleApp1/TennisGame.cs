@@ -8,7 +8,7 @@ internal class TennisGame
     {
         if (player1 == player2)
         {
-            return $"{ScoreNames[player1]}-All";
+            return player1 >= 3 ? "Deuce" : $"{ScoreNames[player1]}-All";
         }
 
         return $"{ScoreNames[player1]}-{ScoreNames[player2]}";

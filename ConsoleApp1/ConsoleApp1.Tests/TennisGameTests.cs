@@ -16,6 +16,17 @@ public class TennisGameTests
         Assert.That(result, Is.EqualTo(expected));
     }
 
+    [TestCase(3, 3)]
+    [TestCase(4, 4)]
+    public void Score_EqualScoresAtFortyOrAbove_ReturnsDeuce(int player1, int player2)
+    {
+        var sut = new TennisGame();
+
+        var result = sut.Score(player1, player2);
+
+        Assert.That(result, Is.EqualTo("Deuce"));
+    }
+
     [TestCase(1, 0, "Fifteen-Love")]
     [TestCase(2, 1, "Thirty-Fifteen")]
     [TestCase(3, 2, "Forty-Thirty")]
