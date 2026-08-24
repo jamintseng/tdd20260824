@@ -51,4 +51,18 @@ public class TennisGameTests
 
         Assert.That(result, Is.EqualTo(expected));
     }
+
+    [TestCase(4, 0, "Win for player1")]
+    [TestCase(4, 2, "Win for player1")]
+    [TestCase(5, 3, "Win for player1")]
+    [TestCase(3, 5, "Win for player2")]
+    public void Score_PlayerLeadsByTwoAtFourOrAbove_ReturnsWin(
+        int player1, int player2, string expected)
+    {
+        var sut = new TennisGame();
+
+        var result = sut.Score(player1, player2);
+
+        Assert.That(result, Is.EqualTo(expected));
+    }
 }
