@@ -52,4 +52,14 @@ public class DiscountCalculatorTests
 
         Assert.That(result, Is.EqualTo(900.05m));
     }
+
+    [Test]
+    public void Calculate_AmountOver5000_Returns20PercentOff()
+    {
+        var sut = new DiscountCalculator();
+
+        var result = sut.Calculate(6000m);
+
+        Assert.That(result, Is.EqualTo(4800m));
+    }
 }
