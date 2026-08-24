@@ -39,4 +39,16 @@ public class TennisGameTests
 
         Assert.That(result, Is.EqualTo(expected));
     }
+
+    [TestCase(4, 3, "Advantage player1")]
+    [TestCase(3, 4, "Advantage player2")]
+    public void Score_BothAtFortyAndOnePointLead_ReturnsAdvantage(
+        int player1, int player2, string expected)
+    {
+        var sut = new TennisGame();
+
+        var result = sut.Score(player1, player2);
+
+        Assert.That(result, Is.EqualTo(expected));
+    }
 }

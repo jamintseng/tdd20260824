@@ -11,6 +11,11 @@ internal class TennisGame
             return player1 >= 3 ? "Deuce" : $"{ScoreNames[player1]}-All";
         }
 
+        if (player1 >= 3 && player2 >= 3)
+        {
+            return player1 > player2 ? "Advantage player1" : "Advantage player2";
+        }
+
         return $"{ScoreNames[player1]}-{ScoreNames[player2]}";
     }
 }
