@@ -42,4 +42,14 @@ public class DiscountCalculatorTests
 
         Assert.That(result, Is.EqualTo(1111.10m));
     }
+
+    [Test]
+    public void Calculate_DiscountedAmountIsExactlyHalfCent_RoundsAwayFromZero()
+    {
+        var sut = new DiscountCalculator();
+
+        var result = sut.Calculate(1000.05m);
+
+        Assert.That(result, Is.EqualTo(900.05m));
+    }
 }
