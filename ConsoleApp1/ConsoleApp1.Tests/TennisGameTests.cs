@@ -75,4 +75,16 @@ public class TennisGameTests
         Assert.That(() => sut.Score(player1, player2),
             Throws.TypeOf<ArgumentOutOfRangeException>());
     }
+
+    [TestCase(4, 3, "Advantage Alice")]
+    [TestCase(3, 4, "Advantage Bob")]
+    public void Score_CustomPlayerNames_ReturnsGivenNames(
+        int player1, int player2, string expected)
+    {
+        var sut = new TennisGame("Alice", "Bob");
+
+        var result = sut.Score(player1, player2);
+
+        Assert.That(result, Is.EqualTo(expected));
+    }
 }
