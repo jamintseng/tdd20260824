@@ -85,9 +85,9 @@ CLAUDE.md 禁止用 hardcode 或比對測試輸入值騙過測試，所以經典
 
 ## 未定案，需要決定
 
-1. **`Advantage` / `Win` 的輸出字串格式。**
-   目前假設 `Advantage player1`、`Win for player1`（Coding Dojo 慣例）。
-   若要改成別的格式，第 4、5 項的斷言要跟著改。
+1. ~~**`Advantage` / `Win` 的輸出字串格式。**~~ **已定案**：
+   `Advantage player1`、`Win for player1`，玩家標識用 `player1` / `player2`
+   （小寫、無空白）。沿用 Coding Dojo 慣例，便於與網路上的參考解答對照。
 
 2. **不可能發生的分數要不要處理。**
    例如 `5-1` 在真實網球中不存在（`4-1` 就結束了）。第 5 項的實作會把它
