@@ -6,6 +6,16 @@ internal class TennisGame
 
     public string Score(int player1, int player2)
     {
+        if (player1 < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(player1));
+        }
+
+        if (player2 < 0)
+        {
+            throw new ArgumentOutOfRangeException(nameof(player2));
+        }
+
         if (player1 == player2)
         {
             return player1 >= 3 ? "Deuce" : $"{ScoreNames[player1]}-All";

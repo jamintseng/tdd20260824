@@ -65,4 +65,14 @@ public class TennisGameTests
 
         Assert.That(result, Is.EqualTo(expected));
     }
+
+    [TestCase(-1, 0)]
+    [TestCase(0, -1)]
+    public void Score_NegativeScore_ThrowsArgumentOutOfRange(int player1, int player2)
+    {
+        var sut = new TennisGame();
+
+        Assert.That(() => sut.Score(player1, player2),
+            Throws.TypeOf<ArgumentOutOfRangeException>());
+    }
 }
