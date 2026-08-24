@@ -11,7 +11,7 @@ internal class DiscountCalculator
 
         if (amount > 1000m)
         {
-            return amount * 0.9m;
+            return decimal.Round(amount * 0.9m, 2, MidpointRounding.AwayFromZero);
         }
 
         return amount;

@@ -32,4 +32,14 @@ public class DiscountCalculatorTests
         Assert.That(() => sut.Calculate(amount),
             Throws.TypeOf<ArgumentOutOfRangeException>());
     }
+
+    [Test]
+    public void Calculate_DiscountedAmountHasFractionalCents_RoundsToTwoDecimalPlaces()
+    {
+        var sut = new DiscountCalculator();
+
+        var result = sut.Calculate(1234.56m);
+
+        Assert.That(result, Is.EqualTo(1111.10m));
+    }
 }
