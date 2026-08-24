@@ -82,4 +82,13 @@ public class DiscountCalculatorTests
 
         Assert.That(result, Is.EqualTo(18000m));
     }
+
+    [Test]
+    public void Calculate_AmountHasMoreThanTwoDecimalPlaces_ThrowsArgumentException()
+    {
+        var sut = new DiscountCalculator();
+
+        Assert.That(() => sut.Calculate(1000.001m),
+            Throws.TypeOf<ArgumentException>());
+    }
 }

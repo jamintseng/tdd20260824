@@ -19,6 +19,11 @@ internal class DiscountCalculator
             throw new ArgumentOutOfRangeException(nameof(amount));
         }
 
+        if (RoundToCents(amount) != amount)
+        {
+            throw new ArgumentException("金額不得超過兩位小數", nameof(amount));
+        }
+
         foreach (var (threshold, rate) in Tiers)
         {
             if (amount > threshold)
