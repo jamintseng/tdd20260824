@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dotnet test:*)",
+      "Bash(dotnet build:*)",
+      "Bash(dotnet new:*)",
+      "Bash(git diff:*)",
+      "Bash(git status:*)",
+      "Bash(git add:*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dotnet test ConsoleApp1/ConsoleApp1.Tests/ConsoleApp1.Tests.csproj --nologo -v q"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "dotnet test ConsoleApp1/ConsoleApp1.slnx --nologo -v q || (echo '測試未全綠，不得結束本回合，請繼續修正' >&2; exit 2)"
+          }
+        ]
+      }
+    ]
+  }
+}
